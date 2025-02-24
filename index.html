@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Machine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>TRANSLATION MACHINE</h1>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>What is this?</h2>
+            <p> These symbols and patterns are known as Tatreez! traditional patterns with significance to palestine.</p>
+            <h3>Instructions</h3>
+            <p>Click an icon below and make a pattern of your choosing. Learn about the different patterns and their significance! Play with color and save your result. Goodluck!</p>
+            
+            <div class="divider"></div>
+        
+            <label for="colorPicker">Block Color:</label>
+            <input type="color" id="colorPicker" value="#000000">
+        
+            <div class="divider"></div>
+        
+            <!-- Future toggles can go here -->
+        </div>
+
+        <div class="main-content">
+            <div class="media-box" id="mediaBox">
+                <!-- Blocks will be added here -->
+            </div>
+
+            <!-- Moved the icon section inside main-content -->
+            <div class="icon-container">
+                <div class="icon" onclick="addBlock('olive')">
+                    <img src="olive.svg" alt="Olive">
+                    <p>Olive</p>
+                </div>
+                <div class="icon" onclick="addBlock('flower')">
+                    <img src="flower.svg" alt="Flower">
+                    <p>Flower</p>
+                </div>
+                <div class="icon" onclick="addBlock('bird')">
+                    <img src="bird.svg" alt="Bird">
+                    <p>Bird</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
