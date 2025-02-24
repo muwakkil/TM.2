@@ -8,15 +8,59 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Lekton", sans-serif;
 }
 
+/* Updated header to position Save Pattern button to the top right */
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #707070;
     color: rgb(0, 0, 0);
     padding: 15px;
+    font-family: "Handjet", serif;
+    font-size: 40px;
+    text-align: center;
+    position: relative;
+}
+
+header h1 {
+    flex-grow: 1;
     text-align: center;
 }
+
+/* Save Pattern Button */
+#saveButton {
+    font-size: 16px;
+    padding: 10px;
+    background: #000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: "Lekton", sans-serif;
+}
+
+#saveButton:hover {
+    background: #333;
+}
+
+/* Inventory Page Button */
+#inventoryButton {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    background: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#inventoryButton:hover {
+    background: #333;
+}
+
 
 .container {
     display: flex;
@@ -24,22 +68,31 @@ header {
     margin-top: 0; /* Keeps sidebar flush with the header */
 }
 
+/* Sidebar */
 .sidebar {
     width: 250px;
     padding: 20px;
     background-color: #cecccc;
     display: flex;
     flex-direction: column;
-    text-align:center;
+    text-align: center;
 }
 
 .sidebar h2 {
+    font-family: "Handjet", serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.sidebar h3, .sidebar h4 {
+    font-family: "Handjet", serif;
+    font-size: 22px;
     margin-bottom: 10px;
-    font-family: 'Courier New', Courier, monospace;
 }
 
 .sidebar p {
-    margin-bottom: 10px;
+    font-family: "Lekton", sans-serif;
+    margin-bottom: 20px;
 }
 
 .divider {
@@ -48,20 +101,40 @@ header {
     width: 100%;
 }
 
+/* Styling for color and background toggles */
+#colorPicker, #bgToggle {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+}
+
+#bgToggle {
+    background: #707070;
+    color: white;
+    cursor: pointer;
+}
+
+#bgToggle:hover {
+    background: #555;
+}
+
 /* Main Content Layout */
 .main-content {
     flex: 1;
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center everything horizontally */
-    gap: 20px; /* Space between media-box and icons */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     padding: 20px;
+    background: #ffffff; /* Default background */
 }
 
 /* Media Box Styling */
 .media-box {
-    width: calc(100% - 50px); /* Adjust width so it fills more space while keeping margin */
-    max-width: 2000px; /* Prevent it from getting too large on wide screens */
+    width: calc(100% - 50px);
+    max-width: 2000px;
     height: 400px;
     background: #ddd;
     border: 2px solid #333;
@@ -71,22 +144,22 @@ header {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 15px; /* Space between media box and header */
-    margin-right: 15px; /* Space between media box and right edge */
+    margin-top: 15px;
+    margin-right: 15px;
 }
-
 
 /* Icon Section Styling */
 .icon-container {
     display: flex;
     justify-content: center;
     gap: 20px;
-    width: 100%; /* Ensures alignment with media-box */
+    width: 100%;
 }
 
 .icon {
     text-align: center;
     cursor: pointer;
+    font-family: "Lekton", sans-serif;
 }
 
 .icon img {
@@ -97,5 +170,10 @@ header {
 
 .icon img:hover {
     transform: scale(1.1);
+}
+
+/* Ensures newly added SVG blocks are correctly styled */
+.block {
+    cursor: pointer;
 }
 

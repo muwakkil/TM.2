@@ -4,30 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Translation Machine</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>TRANSLATION MACHINE</h1>
+        <h1>** TRANSLATION MACHINE **</h1>
+        <button id="saveButton">SAVE</button>
     </header>
 
     <div class="container">
         <div class="sidebar">
-            <h2>What is this?</h2>
+            <h2>SYMBOL --> PATTERN</h2>
+            
+            <h3>WHAT IS THIS?</h3>
             <p>These symbols and patterns are known as Tatreez!</p>
             <p>Traditional Palestinian embroidery. It signifies resistance, identity, and storytelling, with motifs reflecting history, geography, and personal narratives.</p>
-
-            <h3>Instructions</h3>
-            <p>Click an icon below and make a pattern of your choosing. Learn about the different patterns and their significance! Play with color and save your result. Goodluck!</p>
+            
+            <h4>INSTRUCTIONS</h4>
+            <p>Click an icon below and make a pattern of your choosing. Learn about the different patterns and their significance! Play with color and save your result. Good luck!</p>
             
             <div class="divider"></div>
-        
+
+            <!-- Color Picker -->
             <label for="colorPicker">Block Color:</label>
             <input type="color" id="colorPicker" value="#000000">
-        
+
             <div class="divider"></div>
-        
-            <!-- Future toggles can go here -->
+
+            <!-- Background Toggle -->
+            
+            <button id="bgToggle">Background Color:</button>
+            
+            <div class="divider"></div>
+
+            <!-- Inventory Page Button -->
+            <button id="inventoryButton">Inventory Page:</button>
+
+            <div class="divider"></div>
         </div>
 
         <div class="main-content">
@@ -35,7 +54,6 @@
                 <!-- Blocks will be added here -->
             </div>
 
-            <!-- Moved the icon section inside main-content -->
             <div class="icon-container">
                 <div class="icon" onclick="addBlock('olive')">
                     <img src="olive.svg" alt="Olive">
