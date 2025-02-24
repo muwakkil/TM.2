@@ -30,6 +30,7 @@ header {
     background-color: #cecccc;
     display: flex;
     flex-direction: column;
+    text-align:center;
 }
 
 .sidebar h2 {
