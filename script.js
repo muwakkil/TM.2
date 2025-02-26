@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Array of background colors to cycle through
-    const bgColors = ["#ddd", "#DDBC9D", "#C9523C", "#417D7B", "#70671A", "#EEAD35", "#A31D1D", "#0A3A48"];
+    const bgColors = ["#ddd","#F2D8C2", "#DB8076", "#BF2121", "#D94A4A", "#47B3DB", "#A47ED9", "#70671A", "#BDBF6F", "#F2D8C2", "#592202"];
     let colorIndex = 0;
 
     // Background color toggle for media box
@@ -62,7 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Apply the selected color
                 svgElement.querySelectorAll("path, circle").forEach((shape) => {
                     shape.setAttribute("fill", selectedColor);
-                    
+                    shape.setAttribute("stroke", "black");
+                    shape.setAttribute("stroke-width", "2");
                 });
 
                 wrapper.appendChild(svgElement);
@@ -101,8 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.getElementById("reloadButton").addEventListener("click", function () {
+    location.reload();
+});
 
 
     // Expose addBlock function globally
     window.addBlock = addBlock;
 });
+

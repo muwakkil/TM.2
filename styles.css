@@ -11,38 +11,74 @@ body {
     font-family: "Lekton", sans-serif;
 }
 
-/* Updated header to position Save Pattern button to the top right */
+/* Keeps the center aligned */
+.header-center {
+    flex-grow: 1; /* Takes up the remaining space */
+    display: flex;
+    justify-content: space-between; /* Ensures the title stays in the center */
+    align-items: center;
+}
+
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center; /* Ensures left, center, and right alignment */
     background: #707070;
     color: rgb(0, 0, 0);
-    padding: 15px;
+    padding: 5px;
     font-family: "Handjet", serif;
     font-size: 40px;
     text-align: center;
-    position: relative;
 }
 
-header h1 {
-    flex-grow: 1;
-    text-align: center;
-}
 
-/* Save Pattern Button */
-#saveButton {
+
+/* Ensures buttons stay in place */
+#reloadButton, #saveButton {
     font-size: 16px;
     padding: 10px;
-    background: #000;
-    color: white;
+    background: none;
+    color: black;
     border: none;
     cursor: pointer;
     font-family: "Lekton", sans-serif;
 }
 
+#reloadButton {
+    font-size: 40px;
+    margin-right: 380px; /* Pushes everything else to the right */
+}
+
+#saveButton {
+    background: #000;
+    color: white;
+    padding: 10px;
+    margin-left: 380px; /* Pushes it to the far right */
+}
+
 #saveButton:hover {
     background: #333;
+    transform: scale(1.1);
+}
+
+#reloadButton:hover {
+    transform: scale(1.2);
+}
+
+/* Fun Icon */
+.fun-icon {
+    width: 60px;
+    height: 60px;
+    animation: rotateIcon 8s linear infinite;
+    /* animation: rotateIcon 10s steps(4, end) infinite; */
+}
+
+@keyframes rotateIcon {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(90deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(270deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Inventory Page Button */
@@ -59,6 +95,7 @@ header h1 {
 
 #inventoryButton:hover {
     background: #333;
+    
 }
 
 
@@ -81,7 +118,7 @@ header h1 {
 .sidebar h2 {
     font-family: "Handjet", serif;
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .sidebar h3, .sidebar h4 {
@@ -92,7 +129,7 @@ header h1 {
 
 .sidebar p {
     font-family: "Lekton", sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .divider {
@@ -133,19 +170,19 @@ header h1 {
 
 /* Media Box Styling */
 .media-box {
-    width: calc(100% - 50px);
-    max-width: 2000px;
+    width: calc(100% - 40px);
+    max-width: 2050px;
     height: 400px;
     background: #ddd;
-    border: 2px solid #333;
-    border-radius: 10px;
+    border: 1.5px solid #333;
+    border-radius: 4px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 10px;
     margin-top: 15px;
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 /* Icon Section Styling */
