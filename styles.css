@@ -160,21 +160,35 @@ header h1 {
 .icon {
     text-align: center;
     cursor: pointer;
-    font-size: 44px; /* Increased size */
+    font-size: 50px; /* Increased size */
     transition: transform 0.2s ease-in-out;
     
 }
 
 
 .icon p {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     transition: transform 0.2s ease-in-out;
 }
 
 .icon p:hover {
     transform: scale(1.2);
 }
+
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
 
 /* Ensures newly added SVG blocks are correctly styled */
 .block {

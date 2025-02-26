@@ -54,32 +54,36 @@
             </div>
 
             <div class="icon-container">
-                <!-- 7 Custom SVG Symbols -->
-                <div class="icon" onclick="addBlock('olive_branch')">
-                    <p>⦿</p>
-                </div>
-                <div class="icon" onclick="addBlock('pomegranate')">
-                    <p>❧</p>
-                </div>
-                <div class="icon" onclick="addBlock('mill_wheel')">
-                    <p>✺</p>
-                </div>
-                <div class="icon" onclick="addBlock('birds')">
-                    <p>🀐</p>
-                </div>
-                <div class="icon" onclick="addBlock('damascus_rose')">
-                    <p>❀</p>
-                </div>
-                <div class="icon" onclick="addBlock('fish_net_1')">
-                    <p>❯❮</p>
-                </div>
-                <div class="icon" onclick="addBlock('fish_net_2')">
-                    <p>❵❴</p>
+                <div class="icon-container">
+                    <!-- 7 Custom SVG Symbols with descriptions -->
+                    <div class="icon" data-description="Olive Branch - Symbol of peace and resilience" onclick="addBlock('olive_branch')">
+                        <p>⦿</p>
+                    </div>
+                    <div class="icon" data-description="Pomegranate - Represents fertility and abundance" onclick="addBlock('pomegranate')">
+                        <p>❧</p>
+                    </div>
+                    <div class="icon" data-description="Mill Wheel - Signifies strength and continuity" onclick="addBlock('mill_wheel')">
+                        <p>✺</p>
+                    </div>
+                    <div class="icon" data-description="Birds - Freedom and migration" onclick="addBlock('birds')">
+                        <p>🀐</p>
+                    </div>
+                    <div class="icon" data-description="Damascus Rose - Love and beauty" onclick="addBlock('damascus_rose')">
+                        <p>❀</p>
+                    </div>
+                    <div class="icon" data-description="Fish Net 1 - Community and unity" onclick="addBlock('fish_net_1')">
+                        <p>❯❮</p>
+                    </div>
+                    <div class="icon" data-description="Fish Net 2 - Connection and interdependence" onclick="addBlock('fish_net_2')">
+                        <p>❵❴</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    
+        <!-- Tooltip -->
+        <div id="tooltip" class="tooltip"></div>
+    
     <script src="script.js"></script>
 </body>
 

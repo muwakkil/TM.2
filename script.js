@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Adjust SVG size and allow color toggling
                // Set only height, let width scale proportionally
-            svgElement.setAttribute("height", "100");
+            svgElement.setAttribute("height", "150");
             svgElement.removeAttribute("width"); 
             svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
 
@@ -71,6 +71,38 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error(error));
     }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const icons = document.querySelectorAll(".icon");
+    const tooltip = document.getElementById("tooltip");
+    let hoverTimeout;
+
+    icons.forEach(icon => {
+        icon.addEventListener("mouseenter", function (event) {
+            const description = icon.getAttribute("data-description");
+            if (description) {
+                hoverTimeout = setTimeout(() => {
+                    tooltip.textContent = description;
+                    tooltip.style.left = `${event.pageX + 10}px`;
+                    tooltip.style.top = `${event.pageY + 10}px`;
+                    tooltip.style.opacity = "1";
+                }, 2000); // 2-second delay
+            }
+        });
+
+        icon.addEventListener("mousemove", function (event) {
+            tooltip.style.left = `${event.pageX + 10}px`;
+            tooltip.style.top = `${event.pageY + 10}px`;
+        });
+
+        icon.addEventListener("mouseleave", function () {
+            clearTimeout(hoverTimeout);
+            tooltip.style.opacity = "0";
+        });
+    });
+});
+
+
 
     // Expose addBlock function globally
     window.addBlock = addBlock;
