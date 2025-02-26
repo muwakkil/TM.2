@@ -176,6 +176,13 @@ header h1 {
     transform: scale(1.2);
 }
 
+
+
+/* Ensures newly added SVG blocks are correctly styled */
+.block {
+    cursor: pointer;
+}
+
 .tooltip {
     position: absolute;
     background: rgba(0, 0, 0, 0.8);
@@ -188,10 +195,3 @@ header h1 {
     pointer-events: none;
     transition: opacity 0.3s ease-in-out;
 }
-
-
-/* Ensures newly added SVG blocks are correctly styled */
-.block {
-    cursor: pointer;
-}
-

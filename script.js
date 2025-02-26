@@ -18,14 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
         mediaBox.style.background = bgColors[colorIndex];
     });
 
-    // Color picker for block fill color
+    // Color picker for the most recently added block
     colorPicker.addEventListener("input", function () {
         let selectedColor = this.value;
+        let lastBlock = mediaBox.lastElementChild;
 
-        // Apply the color only to newly added blocks
-        document.querySelectorAll(".media-box .block svg path, .media-box .block svg *").forEach((block) => {
-            block.setAttribute("fill", selectedColor);
-        });
+        if (lastBlock && lastBlock.classList.contains("block")) {
+            lastBlock.querySelectorAll("svg path, svg circle").forEach((shape) => {
+                shape.setAttribute("fill", selectedColor);
+            });
+        }
     });
 
     function addBlock(type) {
@@ -52,14 +54,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                // Adjust SVG size and allow color toggling
-               // Set only height, let width scale proportionally
-            svgElement.setAttribute("height", "150");
-            svgElement.removeAttribute("width"); 
-            svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
+                // Set height and maintain aspect ratio
+                svgElement.setAttribute("height", "150");
+                svgElement.removeAttribute("width");
+                svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
 
-
-                // Apply the selected color
+                // Apply the selected color to the newly created block only
                 svgElement.querySelectorAll("path, circle").forEach((shape) => {
                     shape.setAttribute("fill", selectedColor);
                     shape.setAttribute("stroke", "black");
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(error));
     }
 
-document.addEventListener("DOMContentLoaded", function () {
+    // Tooltip logic
     const icons = document.querySelectorAll(".icon");
     const tooltip = document.getElementById("tooltip");
     let hoverTimeout;
@@ -100,9 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
             tooltip.style.opacity = "0";
         });
     });
-});
-
-
 
     // Expose addBlock function globally
     window.addBlock = addBlock;
