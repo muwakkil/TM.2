@@ -172,7 +172,7 @@ header {
 .media-box {
     width: calc(100% - 40px);
     max-width: 2050px;
-    height: 400px;
+    height: 450px;
     background: #ddd;
     border: 1.5px solid #333;
     border-radius: 4px;
@@ -217,23 +217,27 @@ header {
 .media-box {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start; /* Ensures proper alignment on new lines */
-    gap: 0px; /* Removes extra spacing */
+    align-items: center; /* Keeps them vertically aligned */
+    justify-content: flex-start; /* Ensures they wrap properly */
+    gap: 0px; /* Ensures no space between elements */
 }
 
 .block {
     display: flex;
-    align-items: center;
+    align-items: center; /* Keeps SVG centered */
     justify-content: center;
-    margin: 0;
     padding: 0;
-    line-height: 1; /* Prevents extra vertical spacing */
-    cursor: pointer;
+    margin: 0;
+    line-height: 1; /* Removes extra line height spacing */
 }
 
 .block svg {
     display: block;
+    height: 90px; /* Ensures uniform height */
+    width: auto; /* Let width scale proportionally */
+    margin: -2px 0; /* Helps close any micro-gaps */
 }
+
 
 
 .tooltip {
