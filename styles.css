@@ -233,7 +233,7 @@ header {
 
 .block svg {
     display: block;
-    height: 90px; /* Ensures uniform height */
+    height: 50px; /* Ensures uniform height */
     width: auto; /* Let width scale proportionally */
     margin: -2px 0; /* Helps close any micro-gaps */
 }
