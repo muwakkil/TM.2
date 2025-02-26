@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Adjust SVG size and allow color toggling
                // Set only height, let width scale proportionally
-            svgElement.setAttribute("height", "80");
+            svgElement.setAttribute("height", "100");
             svgElement.removeAttribute("width"); 
             svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
 
