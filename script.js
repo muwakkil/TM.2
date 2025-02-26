@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let selectedColor = this.value;
 
         // Apply the color only to newly added blocks
-        document.querySelectorAll(".media-box .block svg path, .media-box .block svg circle").forEach((block) => {
+        document.querySelectorAll(".media-box .block svg path, .media-box .block svg *").forEach((block) => {
             block.setAttribute("fill", selectedColor);
         });
     });
