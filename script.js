@@ -40,17 +40,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let shape;
         
-        if (type === "olive") {
+        if (type === "olive_branch") {
             shape = document.createElementNS("http://www.w3.org/2000/svg", "circle");
             shape.setAttribute("cx", "50");
             shape.setAttribute("cy", "50");
             shape.setAttribute("r", "40");
-        } else if (type === "flower") {
+        } else if (type === "pomegranate") {
             shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
             shape.setAttribute("d", "M50 10 L65 40 L95 50 L65 60 L50 90 L35 60 L5 50 L35 40 Z");
         } else if (type === "bird") {
             shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
             shape.setAttribute("d", "M10 60 Q50 10, 90 60 T170 60");
+
+
+
+            
         } else {
             console.warn("Invalid type: " + type);
             return;
