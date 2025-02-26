@@ -180,9 +180,10 @@ header {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0px; 
     margin-top: 15px;
     margin-right: 5px;
+    justify-content: flex-start; 
 }
 
 /* Icon Section Styling */
@@ -214,13 +215,6 @@ header {
 }
 
 
-.media-box {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center; /* Keeps them vertically aligned */
-    justify-content: flex-start; /* Ensures they wrap properly */
-    gap: 0px; /* Ensures no space between elements */
-}
 
 .block {
     display: flex;
@@ -240,7 +234,7 @@ header {
 
 
 
-.tooltip {
+/* .tooltip {
     position: absolute;
     background: rgba(0, 0, 0, 0.8);
     color: white;
@@ -251,4 +245,4 @@ header {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease-in-out;
-}
+} */
