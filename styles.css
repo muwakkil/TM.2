@@ -181,10 +181,10 @@ header {
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
-   
+   align-items: center;
     margin-top: 15px;
     margin-right: 5px;
-    justify-content: flex-start; 
+    
 }
 
 /* Icon Section Styling */
