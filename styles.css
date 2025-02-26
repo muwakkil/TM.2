@@ -160,7 +160,7 @@ header h1 {
 .icon {
     text-align: center;
     cursor: pointer;
-    font-size: 35px; /* Increased size */
+    font-size: 44px; /* Increased size */
     transition: transform 0.2s ease-in-out;
     
 }
@@ -173,7 +173,7 @@ header h1 {
 }
 
 .icon p:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 /* Ensures newly added SVG blocks are correctly styled */
