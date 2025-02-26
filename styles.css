@@ -169,7 +169,7 @@ header {
 }
 
 /* Media Box Styling */
-.media-box {
+.media-box { 
     width: calc(100% - 40px);
     max-width: 2050px;
     height: 450px;
@@ -177,10 +177,11 @@ header {
     border: 1.5px solid #333;
     border-radius: 4px;
     display: flex;
+    gap: 0px; 
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0px; 
+   
     margin-top: 15px;
     margin-right: 5px;
     justify-content: flex-start; 
@@ -227,7 +228,7 @@ header {
 
 .block svg {
     display: block;
-    height: 70px; /* Ensures uniform height */
+    height: 80px; /* Ensures uniform height */
     width: auto; /* Let width scale proportionally */
     margin: -2px 0; /* Helps close any micro-gaps */
 }
