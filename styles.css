@@ -214,11 +214,27 @@ header {
 }
 
 
+.media-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start; /* Ensures proper alignment on new lines */
+    gap: 0px; /* Removes extra spacing */
+}
 
-/* Ensures newly added SVG blocks are correctly styled */
 .block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    line-height: 1; /* Prevents extra vertical spacing */
     cursor: pointer;
 }
+
+.block svg {
+    display: block;
+}
+
 
 .tooltip {
     position: absolute;
