@@ -53,9 +53,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 // Adjust SVG size and allow color toggling
-                svgElement.setAttribute("width", "50");
-                svgElement.setAttribute("height", "50");
-                svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
+               // Set only height, let width scale proportionally
+            svgElement.setAttribute("height", "50");
+            svgElement.removeAttribute("width"); 
+            svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
 
                 // Apply the selected color
                 svgElement.querySelectorAll("path, circle").forEach((shape) => {
