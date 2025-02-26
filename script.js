@@ -23,50 +23,51 @@ document.addEventListener("DOMContentLoaded", function () {
         let selectedColor = this.value;
 
         // Apply the color only to newly added blocks
-        document.querySelectorAll(".media-box .block path, .media-box .block circle").forEach((block) => {
+        document.querySelectorAll(".media-box .block svg path, .media-box .block svg circle").forEach((block) => {
             block.setAttribute("fill", selectedColor);
         });
     });
 
     function addBlock(type) {
         let selectedColor = colorPicker.value || "#000"; // Default to black if no color is selected
+        let svgPath = `blockimages/${type}.svg`;
 
-        let newSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        newSvg.setAttribute("width", "50");
-        newSvg.setAttribute("height", "50");
-        newSvg.setAttribute("viewBox", "0 0 100 100");
-        newSvg.setAttribute("preserveAspectRatio", "xMidYMid meet");
-        newSvg.classList.add("block");
+        fetch(svgPath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load SVG: ${svgPath}`);
+                }
+                return response.text();
+            })
+            .then(svgContent => {
+                let wrapper = document.createElement("div");
+                wrapper.classList.add("block");
 
-        let shape;
-        
-        if (type === "olive_branch") {
-            shape = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            shape.setAttribute("cx", "50");
-            shape.setAttribute("cy", "50");
-            shape.setAttribute("r", "40");
-        } else if (type === "pomegranate") {
-            shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            shape.setAttribute("d", "M50 10 L65 40 L95 50 L65 60 L50 90 L35 60 L5 50 L35 40 Z");
-        } else if (type === "bird") {
-            shape = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            shape.setAttribute("d", "M10 60 Q50 10, 90 60 T170 60");
+                let parser = new DOMParser();
+                let svgDoc = parser.parseFromString(svgContent, "image/svg+xml");
+                let svgElement = svgDoc.querySelector("svg");
 
+                if (!svgElement) {
+                    console.error(`Invalid SVG format for: ${type}`);
+                    return;
+                }
 
+                // Adjust SVG size and allow color toggling
+                svgElement.setAttribute("width", "50");
+                svgElement.setAttribute("height", "50");
+                svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
 
-            
-        } else {
-            console.warn("Invalid type: " + type);
-            return;
-        }
+                // Apply the selected color
+                svgElement.querySelectorAll("path, circle").forEach((shape) => {
+                    shape.setAttribute("fill", selectedColor);
+                    shape.setAttribute("stroke", "black");
+                    shape.setAttribute("stroke-width", "2");
+                });
 
-        // Apply the selected color to the shape
-        shape.setAttribute("fill", selectedColor);
-        shape.setAttribute("stroke", "black");
-        shape.setAttribute("stroke-width", "3");
-
-        newSvg.appendChild(shape);
-        mediaBox.appendChild(newSvg);
+                wrapper.appendChild(svgElement);
+                mediaBox.appendChild(wrapper);
+            })
+            .catch(error => console.error(error));
     }
 
     // Expose addBlock function globally
