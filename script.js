@@ -18,15 +18,18 @@ document.addEventListener("DOMContentLoaded", function () {
         mediaBox.style.background = bgColors[colorIndex];
     });
 
-    // Color picker for block fill color
     colorPicker.addEventListener("input", function () {
-        let selectedColor = this.value;
-
-        // Apply the color only to newly added blocks
-        document.querySelectorAll(".media-box .block svg path, .media-box .block svg *").forEach((block) => {
-            block.setAttribute("fill", selectedColor);
-        });
-    });
+        let selectedColor = this.value; // Get the selected color from the color picker
+    
+        // Select the last added block inside .media-box
+        let lastBlock = document.querySelector(".media-box .block:last-child svg");
+        
+        // If a block exists, apply the new color only to its SVG elements
+        if (lastBlock) {
+            lastBlock.querySelectorAll("path, *").forEach((element) => {
+                element.setAttribute("fill", selectedColor); // Set fill color to the selected color
+            });
+        }
 
     function addBlock(type) {
         let selectedColor = colorPicker.value || "#000"; // Default to black if no color is selected
