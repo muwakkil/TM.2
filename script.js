@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 element.setAttribute("fill", selectedColor); // Set fill color to the selected color
             });
         }
+    });
 
     function addBlock(type) {
         let selectedColor = colorPicker.value || "#000"; // Default to black if no color is selected
