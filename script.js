@@ -132,6 +132,7 @@ document.getElementById("saveButton").addEventListener("click", function () {
         // Redirect to gallery page
         window.location.href = "gallery/index.html";
     });
+    
 });
 
 

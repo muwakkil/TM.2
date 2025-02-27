@@ -41,10 +41,33 @@ h1{
 
 /* Hover effect for the button */
 .button-container .button:hover {
-    background: #a7e2f0;
+    background: rgb(219, 253, 229);
     transform: scale(1.1);
 }
 
+#clearGallery {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: aliceblue;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Lekton", sans-serif;
+    transition: background 0.3s ease, transform 0.2s ease;
+    
+}
+
+/* Hover effect */
+#clearGallery:hover {
+    background: rgb(247, 223, 223);
+    transform: scale(1.05);
+}
 
 .gallery {
     display: flex;

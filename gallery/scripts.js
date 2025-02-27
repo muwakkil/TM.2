@@ -12,6 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    document.getElementById("clearGallery").addEventListener("click", function () {
+        const secretCode = prompt("Enter the secret code to clear the gallery:");
+    
+        if (secretCode === "Leya2003") {  // Change this to your own secret code
+            localStorage.removeItem("galleryImages");
+            alert("Gallery cleared!");
+            location.reload();
+        } else {
+            alert("Incorrect code. You are not authorized to clear the gallery.");
+        }
+    });
     
 });
 
