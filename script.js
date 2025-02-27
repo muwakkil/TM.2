@@ -107,6 +107,30 @@ document.getElementById("reloadButton").addEventListener("click", function () {
 });
 
 
+// Save button functionality using html2canvas
+document.getElementById("saveButton").addEventListener("click", function () {
+    const mediaBox = document.getElementById("mediaBox");
+
+    if (!mediaBox) {
+        console.error("Media box not found.");
+        return;
+    }
+
+    // Use html2canvas to capture mediaBox as an image
+    html2canvas(mediaBox, { backgroundColor: null }).then(canvas => {
+        const imageData = canvas.toDataURL("image/png");
+
+        // Store image in localStorage
+        let savedImages = JSON.parse(localStorage.getItem("galleryImages")) || [];
+        savedImages.push(imageData);
+        localStorage.setItem("galleryImages", JSON.stringify(savedImages));
+
+        // Redirect to gallery page
+        window.location.href = "gallery/index.html";
+    });
+});
+
+
     // Expose addBlock function globally
     window.addBlock = addBlock;
 });

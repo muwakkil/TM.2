@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saved Patterns</title>
+    <title>Outputs</title>
+
+     <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
+        <div class="button-container">
+            <a href="../index.html" class="button">Home Page</a> 
+        </div>
         <h1>Saved Patterns</h1>
     </header>
 
-    <div class="gallery-container" id="gallery"></div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let savedPatterns = JSON.parse(localStorage.getItem("savedPatterns")) || [];
-            let gallery = document.getElementById("gallery");
-
-            if (savedPatterns.length === 0) {
-                gallery.innerHTML = "<p>No saved patterns yet.</p>";
-            } else {
-                savedPatterns.forEach(pattern => {
-                    let patternDiv = document.createElement("div");
-                    patternDiv.classList.add("saved-pattern");
-                    patternDiv.innerHTML = pattern;
-                    gallery.appendChild(patternDiv);
-                });
-            }
-        });
-    </script>
+   
+    <div class="gallery" id="galleryContainer"></div>
+    
+     
+     <script src="scripts.js"></script>
 </body>
 </html>

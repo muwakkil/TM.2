@@ -1,0 +1,61 @@
+body {
+    background-color: black;
+    color: aliceblue;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+h1{
+    font-family: "Handjet", serif;
+    font-size: 40px;
+}
+
+.button-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+/* Button styles */
+.button-container .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: "Source Code Pro", monospace;
+    cursor: pointer;
+    border-color: white;
+    border-radius: 5px;
+    background: aliceblue;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    font-family: "Lekton", sans-serif;
+}
+
+/* Hover effect for the button */
+.button-container .button:hover {
+    background: #a7e2f0;
+    transform: scale(1.1);
+}
+
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+.gallery img {
+    max-width: 200px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background: white;
+    padding: 5px;
+}
