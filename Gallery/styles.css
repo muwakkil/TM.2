@@ -54,9 +54,9 @@ h1{
     font-family: "Lekton", sans-serif;
 }
 .gallery img {
-    max-width: 200px;
-    border: 2px solid #333;
-    border-radius: 5px;
-    background: white;
-    padding: 5px;
+    max-width: 250px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: rgba(240, 248, 255, 0.611);
+    padding: 4px;
 }
