@@ -139,11 +139,11 @@ header {
 }
 
 /* Styling for color and background toggles */
-#colorPicker, #bgToggle {
+#colorPicker, #bgToggle, #bgimageToggle {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Lekton", sans-serif;
     border: none;
 }
 
@@ -156,6 +156,21 @@ header {
 #bgToggle:hover {
     background: #555;
 }
+
+#bgimageToggle {
+    background: #707070;
+    color: white;
+    cursor: pointer;
+}
+
+#bgimageToggle {
+    background: #555;
+}
+
+#inventoryButton {
+    font-family: "Lekton", sans-serif;
+}
+
 
 /* Main Content Layout */
 .main-content {
@@ -235,15 +250,3 @@ header {
 
 
 
-/* .tooltip {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
-} */
