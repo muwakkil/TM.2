@@ -78,10 +78,10 @@ h1{
     font-family: "Lekton", sans-serif;
 }
 .gallery img {
-    max-width: 250px;
-    border: 1px solid #333;
+    max-width: 300px;
+    border: .5px solid #333;
     border-radius: 4px;
-    background: rgba(240, 248, 255, 0.611);
+    
     padding: 4px;
 }
 
