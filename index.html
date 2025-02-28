@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Translation Machine</title>
+    <title>C4-TM</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,11 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Lekton:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <header>
         <header>
-             <button id="reloadButton">⬱</button>
+             <button id="reloadButton">
+                <img src="logo.png">
+             </button>
             <img src="fun.svg" alt="Decorative Icon" class="fun-icon">
             &nbsp;
             <h1>STITCHED STORIES</h1>
@@ -29,8 +32,8 @@
     <div class="container">
         <div class="sidebar">
     
-            <h2> SYMBOL → PATTERN</h2>
-             <p>CORE 4 - Tanslation Machine</p>
+            <h2>⁂TRANSLATION⁂ ⁂MACHINE⁂</h2>
+            
 
             <h3>WHAT IS THIS?</h3>
            
@@ -72,26 +75,34 @@
             <div class="icon-container">
                 <div class="icon-container">
                     <!-- 7 Custom SVG Symbols with descriptions -->
-                    <div class="icon" data-description="Olive Branch - Symbol of peace and resilience" onclick="addBlock('olive_branch')">
+                    <div class="icon" onclick="addBlock('olive_branch')">
                         <p>⦿</p>
+                        <div class="description">Olive Branch - Symbol of peace and resilience</div>
                     </div>
-                    <div class="icon" data-description="Pomegranate - Represents fertility and abundance" onclick="addBlock('pomegranate')">
+                    <div class="icon" onclick="addBlock('pomegranate')">
                         <p>❧</p>
+                        <div class="description">Pomegranate - Represents fertility and abundance</div>
                     </div>
-                    <div class="icon" data-description="Mill Wheel - Signifies strength and continuity" onclick="addBlock('mill_wheel')">
+                    <div class="icon" onclick="addBlock('mill_wheel')">
                         <p>✺</p>
+                        <div class="description">Mill Wheel - Signifies strength and continuity</div>
                     </div>
-                    <div class="icon" data-description="Birds - Freedom and migration" onclick="addBlock('birds')">
+                    <div class="icon" onclick="addBlock('birds')">
                         <p>🀐</p>
+                        <div class="description">Birds - Freedom and migration</div>
                     </div>
-                    <div class="icon" data-description="Damascus Rose - Love and beauty" onclick="addBlock('damascus_rose')">
+                    <div class="icon" onclick="addBlock('damascus_rose')">
                         <p>❀</p>
+                        <div class="description">Damascus Rose - Love and beauty</div>
                     </div>
-                    <div class="icon" data-description="Fish Net 1 - Community and unity" onclick="addBlock('fish_net_1')">
+                    <div class="icon" onclick="addBlock('fish_net_1')">
                         <p>❯❮</p>
+                        <div class="description">Fish Net 1 - Community and unity</div>
                     </div>
-                    <div class="icon" data-description="Fish Net 2 - Connection and interdependence" onclick="addBlock('fish_net_2')">
+
+                    <div class="icon" onclick="addBlock('fish_net_2')">
                         <p>❵❴</p>
+                        <div class="description">Fish Net 2 - Connection and interdependence</div>
                     </div>
                 </div>
             </div>
