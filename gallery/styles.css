@@ -80,7 +80,8 @@ h1{
     font-family: "Lekton", sans-serif;
 }
 .gallery img {
-    max-width: 300px;
+    max-height: 150px;
+    width: auto;
     border: .5px solid #333;
     border-radius: 4px;
     
