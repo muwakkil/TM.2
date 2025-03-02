@@ -32,36 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
         location.reload(true);
     });
 
-    // **Fix: Reset DB if needed and initialize properly**
     function initDB() {
         return new Promise((resolve, reject) => {
             const request = indexedDB.open("ImageStoreDB", 1);
 
             request.onupgradeneeded = function (event) {
-                console.log("Upgrading database...");
                 const db = event.target.result;
                 if (!db.objectStoreNames.contains("images")) {
                     db.createObjectStore("images", { keyPath: "id", autoIncrement: true });
-                    console.log("Object store 'images' created.");
                 }
             };
 
             request.onsuccess = function (event) {
-                const db = event.target.result;
-                if (!db.objectStoreNames.contains("images")) {
-                    console.error("Error: Object store 'images' is missing. Resetting database...");
-                    db.close();
-                    indexedDB.deleteDatabase("ImageStoreDB"); // Reset the database
-                    setTimeout(initDB, 500); // Retry initialization
-                    reject("Object store missing, database reset.");
-                } else {
-                    console.log("Database initialized successfully.");
-                    resolve(db);
-                }
+                resolve(event.target.result);
             };
 
             request.onerror = function (event) {
-                console.error("IndexedDB error:", event.target.error);
                 reject("IndexedDB error: " + event.target.error);
             };
         });
@@ -119,23 +105,13 @@ document.addEventListener("DOMContentLoaded", function () {
         let svgPath = `blockimages/${type}.svg`;
 
         fetch(svgPath, { mode: "cors" })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to load SVG: ${svgPath}`);
-                }
-                return response.text();
-            })
+            .then(response => response.text())
             .then(svgContent => {
                 let wrapper = document.createElement("div");
                 wrapper.classList.add("block");
                 let parser = new DOMParser();
                 let svgDoc = parser.parseFromString(svgContent, "image/svg+xml");
                 let svgElement = svgDoc.querySelector("svg");
-
-                if (!svgElement) {
-                    console.error(`Invalid SVG format for: ${type}`);
-                    return;
-                }
 
                 svgElement.setAttribute("height", "200px");
                 svgElement.removeAttribute("width");
@@ -159,29 +135,18 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        html2canvas(mediaBox, { backgroundColor: null }).then(canvas => {
-            const imageData = canvas.toDataURL("image/jpeg", 0.6);
-            saveImageToDB(imageData);
-            window.location.href = "gallery/index.html";
-        });
-
-        html2canvas(mediaBox, { backgroundColor: null }).then(canvas => {
+        html2canvas(mediaBox, { backgroundColor: null, scale: 0.5 }).then(canvas => {
             canvas.toBlob(blob => {
                 const reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = () => {
                     let savedImages = JSON.parse(localStorage.getItem("galleryImages")) || [];
                     savedImages.push(reader.result);
-        
-                    // Store images without a limit
-savedImages.push(newImage);
-        
                     localStorage.setItem("galleryImages", JSON.stringify(savedImages));
-        
-                    // Redirect to gallery page
+                    saveImageToDB(reader.result);
                     window.location.href = "gallery/index.html";
                 };
-            }, "image/jpeg", 0.6); // Compress to JPEG with 70% quality
+            }, "image/jpeg", 0.7);
         });
     });
 
