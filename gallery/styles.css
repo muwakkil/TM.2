@@ -41,7 +41,7 @@ h1{
 
 /* Hover effect for the button */
 .button-container .button:hover {
-    background: rgb(205, 248, 218);
+    background: rgb(210, 251, 222);
     transform: scale(1.1);
 }
 
@@ -69,7 +69,6 @@ h1{
     transform: scale(1.05);
 }
 
-
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -81,9 +80,8 @@ h1{
     font-family: "Lekton", sans-serif;
 }
 .gallery img {
-    max-height: 140px;
+    max-height: 150px;
     width: auto;
-    object-fit: cover;
     border: .5px solid #333;
     border-radius: 4px;
     

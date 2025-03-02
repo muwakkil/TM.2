@@ -173,17 +173,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     let savedImages = JSON.parse(localStorage.getItem("galleryImages")) || [];
                     savedImages.push(reader.result);
         
-                    // Limit stored images (e.g., max 5 images)
-                    if (savedImages.length > 5) {
-                        savedImages.shift(); // Remove the oldest image
-                    }
+                    // Store images without a limit
+savedImages.push(newImage);
         
                     localStorage.setItem("galleryImages", JSON.stringify(savedImages));
         
                     // Redirect to gallery page
                     window.location.href = "gallery/index.html";
                 };
-            }, "image/jpeg", 0.7); // Compress to JPEG with 70% quality
+            }, "image/jpeg", 0.6); // Compress to JPEG with 70% quality
         });
     });
 
