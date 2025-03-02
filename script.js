@@ -133,10 +133,11 @@ document.getElementById("saveButton").addEventListener("click", function () {
         console.error("Media box not found.");
         return;
     }
+    
 
     // Use html2canvas to capture mediaBox as an image
     html2canvas(mediaBox, { backgroundColor: null }).then(canvas => {
-        const imageData = canvas.toDataURL("image/png");
+        const imageData = canvas.toDataURL("image/jpeg", 0.6); // Use JPEG format & reduce quality to 60%
 
         // Store image in localStorage
         let savedImages = JSON.parse(localStorage.getItem("galleryImages")) || [];
