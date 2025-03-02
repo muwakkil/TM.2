@@ -141,8 +141,13 @@ h1 {
 .sidebar p {
     font-family: "Lekton", sans-serif;
     margin-bottom: 9px;
-    font-size: 15.5px;
+    font-size: 14.6px;
+    
+    color: black;
 }
+
+
+
 
 .divider {
     border-bottom: 3px dotted #232323;
