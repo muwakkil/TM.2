@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Array of background colors to cycle through
-    const bgColors = ["#ddd","#F2D8C2", "#DB8076", "#BF2121", "#D94A4A", "#47B3DB", "#A47ED9", "#70671A", "#BDBF6F", "#F2D8C2", "#592202"];
+    const bgColors = ["#ddd", "#F2D8C2", "#DB8076", "#BF2121", "#D94A4A", "#47B3DB", "#A47ED9", "#70671A", "#BDBF6F", "#F2D8C2", "#592202"];
     let colorIndex = 0;
 
     // Background images array (replace with actual image paths)
@@ -23,34 +23,62 @@ document.addEventListener("DOMContentLoaded", function () {
         mediaBox.style.background = bgColors[colorIndex];
     });
 
-     // Background image toggle for media box
-     bgImageToggle.addEventListener("click", function () {
+    // Background image toggle for media box
+    bgImageToggle.addEventListener("click", function () {
         imageIndex = (imageIndex + 1) % bgImages.length;
         mediaBox.style.backgroundImage = `url('bgimages/${bgImages[imageIndex]}')`;
         mediaBox.style.backgroundSize = "100% 100%"; // Stretch image to fit container
-        mediaBox.style.backgroundPosition = "center"; // Center the image
-        mediaBox.style.backgroundRepeat = "no-repeat"; // Prevent tiling
+        mediaBox.style.backgroundPosition = "center";
+        mediaBox.style.backgroundRepeat = "no-repeat";
     });
 
+    // Function to initialize IndexedDB
+    function initDB() {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open("ImageStoreDB", 1);
+
+            request.onupgradeneeded = function (event) {
+                const db = event.target.result;
+                if (!db.objectStoreNames.contains("images")) {
+                    db.createObjectStore("images", { keyPath: "id", autoIncrement: true });
+                }
+            };
+
+            request.onsuccess = function (event) {
+                resolve(event.target.result);
+            };
+
+            request.onerror = function (event) {
+                reject("IndexedDB error: " + event.target.error);
+            };
+        });
+    }
+
+    // Function to save image in IndexedDB
+    async function saveImageToDB(imageData) {
+        const db = await initDB();
+        const transaction = db.transaction("images", "readwrite");
+        const store = transaction.objectStore("images");
+        store.add({ image: imageData });
+    }
+
+    // Color picker functionality for SVG elements
     colorPicker.addEventListener("input", function () {
-        let selectedColor = this.value; // Get the selected color from the color picker
-    
-        // Select the last added block inside .media-box
+        let selectedColor = this.value;
         let lastBlock = document.querySelector(".media-box .block:last-child svg");
-        
-        // If a block exists, apply the new color only to its SVG elements
         if (lastBlock) {
             lastBlock.querySelectorAll("path, *").forEach((element) => {
-                element.setAttribute("fill", selectedColor); // Set fill color to the selected color
+                element.setAttribute("fill", selectedColor);
             });
         }
     });
 
+    // Function to add SVG block dynamically with CORS compliance
     function addBlock(type) {
-        let selectedColor = colorPicker.value || "#000"; // Default to black if no color is selected
+        let selectedColor = colorPicker.value || "#000";
         let svgPath = `blockimages/${type}.svg`;
 
-        fetch(svgPath)
+        fetch(svgPath, { mode: "cors" }) // Ensure CORS compliance
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Failed to load SVG: ${svgPath}`);
@@ -60,7 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(svgContent => {
                 let wrapper = document.createElement("div");
                 wrapper.classList.add("block");
-
                 let parser = new DOMParser();
                 let svgDoc = parser.parseFromString(svgContent, "image/svg+xml");
                 let svgElement = svgDoc.querySelector("svg");
@@ -70,14 +97,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                // Adjust SVG size and allow color toggling
-               // Set only height, let width scale proportionally
-            svgElement.setAttribute("height", "90");
-            svgElement.removeAttribute("width"); 
-            svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
+                svgElement.setAttribute("height", "90");
+                svgElement.removeAttribute("width");
+                svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
 
-
-                // Apply the selected color
                 svgElement.querySelectorAll("path, circle").forEach((shape) => {
                     shape.setAttribute("fill", selectedColor);
                     shape.setAttribute("stroke", "black");
@@ -90,68 +113,20 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error(error));
     }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const icons = document.querySelectorAll(".icon");
-    const tooltip = document.getElementById("tooltip");
-    let hoverTimeout;
-
-    icons.forEach(icon => {
-        icon.addEventListener("mouseenter", function (event) {
-            const description = icon.getAttribute("data-description");
-            if (description) {
-                hoverTimeout = setTimeout(() => {
-                    tooltip.textContent = description;
-                    tooltip.style.left = `${event.pageX + 10}px`;
-                    tooltip.style.top = `${event.pageY + 10}px`;
-                    tooltip.style.opacity = "1";
-                }, 2000); // 2-second delay
-            }
-        });
-
-        icon.addEventListener("mousemove", function (event) {
-            tooltip.style.left = `${event.pageX + 10}px`;
-            tooltip.style.top = `${event.pageY + 10}px`;
-        });
-
-        icon.addEventListener("mouseleave", function () {
-            clearTimeout(hoverTimeout);
-            tooltip.style.opacity = "0";
+    document.getElementById("saveButton").addEventListener("click", function () {
+        if (!mediaBox) {
+            console.error("Media box not found.");
+            return;
+        }
+        
+        html2canvas(mediaBox, { backgroundColor: null }).then(canvas => {
+            const imageData = canvas.toDataURL("image/jpeg", 0.6); // Compressed JPEG format
+            saveImageToDB(imageData); // Store in IndexedDB
+            window.location.href = "gallery/index.html";
         });
     });
-});
 
-document.getElementById("reloadButton").addEventListener("click", function () {
-    location.reload();
-});
-
-
-// Save button functionality using html2canvas
-document.getElementById("saveButton").addEventListener("click", function () {
-    const mediaBox = document.getElementById("mediaBox");
-
-    if (!mediaBox) {
-        console.error("Media box not found.");
-        return;
-    }
-    
-
-    // Use html2canvas to capture mediaBox as an image
-    html2canvas(mediaBox, { backgroundColor: null }).then(canvas => {
-        const imageData = canvas.toDataURL("image/jpeg", 0.6); // Use JPEG format & reduce quality to 60%
-
-        // Store image in localStorage
-        let savedImages = JSON.parse(localStorage.getItem("galleryImages")) || [];
-        savedImages.push(imageData);
-        localStorage.setItem("galleryImages", JSON.stringify(savedImages));
-
-        // Redirect to gallery page
-        window.location.href = "gallery/index.html";
-    });
-    
-});
-
-
-    // Expose addBlock function globally
     window.addBlock = addBlock;
 });
+
 
