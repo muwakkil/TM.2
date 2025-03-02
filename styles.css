@@ -31,7 +31,9 @@ header {
     text-align: center;
 }
 
-
+h1 {
+    letter-spacing: .5px;
+}
 
 /* Ensures buttons stay in place */
 #reloadButton, #saveButton {
@@ -126,17 +128,20 @@ header {
     font-family: "Handjet", serif;
     font-size: 32px;
     margin-bottom: 14px;
+    letter-spacing: .5px;
 }
 
 .sidebar h3, .sidebar h4 {
     font-family: "Handjet", serif;
     font-size: 23px;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
+    letter-spacing: .75px;
 }
 
 .sidebar p {
     font-family: "Lekton", sans-serif;
-    margin-bottom: 14px;
+    margin-bottom: 9px;
+    font-size: 15.5px;
 }
 
 .divider {
@@ -146,7 +151,7 @@ header {
 }
 
 /* Styling for color and background toggles */
-#colorPicker, #bgToggle, #bgimageToggle {
+#colorPicker, #bgToggle, #bgImageToggle {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -166,13 +171,13 @@ header {
 }
 
 /* Background Image Toggle Styling */
-#bgimageToggle {
+#bgImageToggle {
     background: #707070;
     color: white;
     cursor: pointer;
 }
 
-#bgimageToggle {
+#bgImageToggle:hover {
     background: #555;
 }
 
@@ -239,7 +244,7 @@ header {
 
 .description {
     position: absolute;
-    top: 110%; /* Adjust spacing under the icon */
+    top: 85%; /* Adjust spacing under the icon */
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.85); 
@@ -253,7 +258,7 @@ header {
     pointer-events: none;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 10;
-    width: 120px; /* Fixed width */
+    width: 200px; /* Fixed width */
     min-height: 20px; /* Ensures smooth expansion */
     word-wrap: break-word; /* Ensures text wraps properly */
     white-space: normal; /* Allows multi-line text */

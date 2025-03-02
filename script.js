@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const bgToggle = document.getElementById("bgToggle");
+    const bgImageToggle = document.getElementById("bgImageToggle");
     const mediaBox = document.getElementById("mediaBox");
     const colorPicker = document.getElementById("colorPicker");
 
-    if (!mediaBox || !colorPicker || !bgToggle) {
+    if (!mediaBox || !bgToggle || !bgImageToggle || !colorPicker) {
         console.error("One or more elements are missing. Check your HTML IDs.");
         return;
     }
@@ -12,10 +13,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const bgColors = ["#ddd","#F2D8C2", "#DB8076", "#BF2121", "#D94A4A", "#47B3DB", "#A47ED9", "#70671A", "#BDBF6F", "#F2D8C2", "#592202"];
     let colorIndex = 0;
 
+    // Background images array (replace with actual image paths)
+    const bgImages = ["bgi1.png", "bgi2.png", "bgi3.png", "bgi4.png", "bgi5.png", "bgi6.png", "bgi7.png", "bgi8.png", "bgi9.png", "bgi10.png"];
+    let imageIndex = 0;
+
     // Background color toggle for media box
     bgToggle.addEventListener("click", function () {
         colorIndex = (colorIndex + 1) % bgColors.length;
         mediaBox.style.background = bgColors[colorIndex];
+    });
+
+     // Background image toggle for media box
+     bgImageToggle.addEventListener("click", function () {
+        imageIndex = (imageIndex + 1) % bgImages.length;
+        mediaBox.style.backgroundImage = `url('bgimages/${bgImages[imageIndex]}')`;
+        mediaBox.style.backgroundSize = "100% 100%"; // Stretch image to fit container
+        mediaBox.style.backgroundPosition = "center"; // Center the image
+        mediaBox.style.backgroundRepeat = "no-repeat"; // Prevent tiling
     });
 
     colorPicker.addEventListener("input", function () {

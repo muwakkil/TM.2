@@ -41,7 +41,7 @@ h1{
 
 /* Hover effect for the button */
 .button-container .button:hover {
-    background: rgb(219, 253, 229);
+    background: rgb(205, 248, 218);
     transform: scale(1.1);
 }
 
@@ -65,7 +65,7 @@ h1{
 
 /* Hover effect */
 #clearGallery:hover {
-    background: rgb(247, 223, 223);
+    background: rgb(249, 191, 186);
     transform: scale(1.05);
 }
 
