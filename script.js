@@ -33,8 +33,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById("reloadButton").addEventListener("click", function () {
-        location.reload();
+        location.reload(true);
     });
+    
 
 
     // Function to initialize IndexedDB
