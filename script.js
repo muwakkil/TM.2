@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
         mediaBox.style.backgroundRepeat = "no-repeat";
     });
 
+    document.getElementById("reloadButton").addEventListener("click", function () {
+        location.reload();
+    });
+
+
     // Function to initialize IndexedDB
     function initDB() {
         return new Promise((resolve, reject) => {
