@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function addImageToGallery(imageSrc) {
         const img = document.createElement("img");
         img.src = imageSrc;
-        img.style.width = "120px";
+        img.style.width = "200px";
         img.style.margin = "5px";
     }
 
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                svgElement.setAttribute("height", "100");
+                svgElement.setAttribute("height", "200px");
                 svgElement.removeAttribute("width");
                 svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
 

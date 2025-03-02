@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 request.result.forEach(imageData => {
                     let img = document.createElement("img");
                     img.src = imageData.image;
-                    img.style.width = "100px"; // Adjust size as needed
+                    img.style.width = "250px"; // Adjust size as needed
                     img.style.margin = "5px";
                     galleryContainer.appendChild(img);
                 });
