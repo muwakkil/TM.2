@@ -222,7 +222,7 @@ h1 {
 .icon-container {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
     width: 100%;
     font-size: 20px;
 }
