@@ -222,7 +222,7 @@ h1 {
 .icon-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     width: 100%;
     font-size: 20px;
 }
@@ -234,16 +234,18 @@ h1 {
     font-size: 50px; 
     transition: transform 0.2s ease-in-out;
     display: inline-block;
+    
 }
 
-.icon p {
-    width: 80px;
-    height: 80px;
+.icon img {
+    width: 60px;
+    height: 60px;
     transition: transform 0.2s ease-in-out;
     margin: 0; /* Ensures consistent spacing */
+    
 }
 
-.icon p:hover {
+.icon img:hover {
     transform: scale(1.2);
 }
 
